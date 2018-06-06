@@ -1,0 +1,8 @@
+services:
+   wordpress:
+     build: .
+     volumes:
+       - ./app:/var/www/html
+     ports:
+       - "8080:80"
+     restart: always
