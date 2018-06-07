@@ -67,6 +67,8 @@ jobs:
               --execution-role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/ecsTaskExecutionRole \
               --requires-compatibilities "FARGATE" \
               --cpu 256 \
+              --taskRoleArn "ecsExecutionRole" \
+              --executionRoleArn "ecsExecutionRole" \
               --memory 0.5gb \
               --container-definitions "$task_def" \
               --network-mode "awsvpc" \
