@@ -63,7 +63,7 @@ jobs:
             # Register task definition
             json=$(aws ecs register-task-definition \
               --execution-role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/ecsTaskExecutionRole \
-              --requires-compatibilities "EC2" \
+              --requires-compatibilities "FARGATE" \
               --cpu 256 \
               --memory 0.5gb \
               --container-definitions "$task_def" \
