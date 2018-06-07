@@ -5,6 +5,7 @@ jobs:
       - image: circleci/php:7.1-node-browsers
     steps:
       - checkout
+      - run: cd app && composer install -n --ignore-platform-reqs
 
   deploy:
     docker:
