@@ -12,6 +12,7 @@ jobs:
         - image: circleci/php:7.1-node-browsers #docker:17.11.0-ce-git
     steps:
       - checkout
+      - run: cd app && composer install -n --ignore-platform-reqs
 
       - setup_remote_docker:
           docker_layer_caching: true
