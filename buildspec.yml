@@ -14,3 +14,4 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - docker push $IMAGE_REPO_NAME:$IMAGE_TAG
