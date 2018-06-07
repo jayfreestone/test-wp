@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Push to ECR
           command: |
-            docker tag test-wp:$CIRCLE_SHA1 $ECR_LOCATION/test-wp:latest
+            docker tag testwp:$CIRCLE_SHA1 $ECR_LOCATION/test-wp:latest
             docker push $ECR_LOCATION/test-wp:latest
 
       - deploy:
