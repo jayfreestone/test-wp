@@ -13,6 +13,23 @@ jobs:
     steps:
       - checkout
       - run: cd app && composer install -n --ignore-platform-reqs
+      - run:
+          name: Create .env
+          command: |
+            cd app
+            cat > .env << EOF
+            DB_NAME=${DB_NAME}
+            DB_USER=${DB_USER}
+            DB_PASSWORD=${DB_PASSWORD}
+
+            # Optional variables
+            DB_HOST=${DB_HOST}
+            DB_PREFIX=test_
+
+            WP_ENV=production
+            #WP_HOME=http://testwp.com
+            #WP_SITEURL=${WP_HOME}/wp
+            EOF
 
       - setup_remote_docker:
           docker_layer_caching: true
