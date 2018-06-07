@@ -82,7 +82,7 @@ jobs:
             # Deploy revision
             aws ecs update-service \
               --cluster "testwp" \
-              --service "test-wp" \
+              --service "test-wp-4" \
               --task-definition "test-wp":"$revision"
 
 workflows:
