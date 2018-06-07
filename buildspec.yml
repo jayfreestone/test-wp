@@ -6,8 +6,6 @@ phases:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
       - |
-               apt-get update
-               #Install composer
                php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
                php composer-setup.php ;
                php -r "unlink('composer-setup.php');" ;
