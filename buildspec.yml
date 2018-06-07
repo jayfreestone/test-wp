@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - |
+               apt-get update
+               #Install composer
+               php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+               php composer-setup.php ;
+               php -r "unlink('composer-setup.php');" ;
+               mv composer.phar /usr/local/bin/composer
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Installing Composer dependencies...
+      - composer install
+      - echo Building the Docker image...
+      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
