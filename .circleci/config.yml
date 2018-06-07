@@ -67,6 +67,7 @@ jobs:
               --cpu 256 \
               --memory 0.5gb \
               --container-definitions "$task_def" \
+              --network-mode "awsvpc" \
               --family "test-wp")
 
             echo $json
