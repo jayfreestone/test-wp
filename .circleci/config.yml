@@ -27,8 +27,8 @@ jobs:
             DB_PREFIX=test_
 
             WP_ENV=production
-            #WP_HOME=http://testwp.com
-            #WP_SITEURL=${WP_HOME}/wp
+            WP_HOME=http://testwp.com
+            WP_SITEURL=${WP_HOME}/wp
             EOF
 
       - setup_remote_docker:
